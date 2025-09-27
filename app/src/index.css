@@ -6,7 +6,9 @@
   --clr-blue: #3B199C;
   --clr-gray-blue: #4950AE;
   --clr-light-blue: #8F95EE;
-  --clr-red: #3B199C;
+  --clr-purple-gradient: rgb(128, 64, 255);
+  --clr-blue-gradient: rgb(8, 186, 254);
+  --clr-red: #e24040;
   --clr-green: #44C651;
 }
 

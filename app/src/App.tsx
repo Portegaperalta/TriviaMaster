@@ -1,8 +1,11 @@
 import './App.css'
+import Home from './components/Home'
 
 function App() {
   return (
-    <main><h1 className='text-2xl'>helloooo world</h1></main>
+    <main>
+      <Home />
+    </main>
   )
 }
 
