@@ -9,3 +9,7 @@
   --clr-red: #3B199C;
   --clr-green: #44C651;
 }
+
+body {
+  font-family: "Nunito", sans-serif;
+}
