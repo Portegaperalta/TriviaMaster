@@ -3,14 +3,14 @@ import ButtonGetStarted from "./ui/ButtonGetStarted";
 export default function Home() {
   return (
     <div className="home text-center space-y-6 px-2 py-30">
-      <div className="home-title flex flex-col text-[4rem]/14">
-        <h1 className="text-transparent font-[800] bg-clip-text 
+      <div className="home-title relative flex flex-col text-[4rem]/16">
+        <h1 className="text-transparent font-[800] relative right-8 bg-clip-text 
         bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
-          Trivia
+          <span className="text-[5rem]">T</span>rivia
         </h1>
-        <h2 className="text-transparent font-[800] bg-clip-text
+        <h2 className="text-transparent font-[800] relative left-4 bg-clip-text 
         bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
-          Master
+          <span className="text-[5rem]">M</span>aster
         </h2>
       </div>
       <div className="home-description space-y-4">
