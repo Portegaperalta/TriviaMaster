@@ -5,11 +5,11 @@ export default function Home() {
     <div className="home text-center space-y-6 px-2">
       <div className="home-title flex flex-col text-[4rem]/14">
         <h1 className="text-transparent font-[800] bg-clip-text 
-        bg-radial-[at_50%_75%] from-(--clr-purple-gradient) to-(--clr-blue-gradient) to-50%">
+        bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
           Trivia
         </h1>
         <h2 className="text-transparent font-[800] bg-clip-text
-        bg-radial-[at_50%_75%] from-(--clr-purple-gradient) to-(--clr-blue-gradient) to-50%">
+        bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
           Master
         </h2>
       </div>
