@@ -2,7 +2,7 @@ import ButtonGetStarted from "./ui/ButtonGetStarted";
 
 export default function Home() {
   return (
-    <div className="home text-center space-y-6 px-2 py-30">
+    <div className="home text-center space-y-10 px-2 py-30">
       <div className="home-title relative flex flex-col text-[4rem]/16">
         <h1 className="text-transparent font-[800] relative right-8 bg-clip-text 
         bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
