@@ -1,8 +1,16 @@
+import { useState } from "react";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
 
 export default function Home() {
+  const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
+
+  const handeStartButtonClick = () => {
+    setIsStartButtonClicked(!isStartButtonClicked);
+  }
+
   return (
-    <div className="home text-center space-y-10 px-2 py-30">
+    <div className={`home text-center space-y-10 px-2 py-30
+    ${isStartButtonClicked ? `hidden` : `inline-block`}`}>
       <div className="home-title relative flex flex-col text-[4rem]/16">
         <h1 className="text-transparent font-[800] relative right-8 bg-clip-text 
         bg-[radial-gradient(at_0%_0%,_var(--clr-purple-gradient),_var(--clr-blue-gradient)_100%)]">
@@ -21,7 +29,7 @@ export default function Home() {
           Challenge yourself with randomly generated quizzes
         </p>
       </div>
-      <ButtonGetStarted />
+      <ButtonGetStarted onClick={handeStartButtonClick} />
     </div>
   )
 }
