@@ -1,11 +1,13 @@
 import { useState } from "react";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
+import getRandomQuestions from "../api/getRandomQuestions";
 
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
 
   const handeStartButtonClick = () => {
     setIsStartButtonClicked(!isStartButtonClicked);
+    getRandomQuestions();
   }
 
   return (

@@ -6,7 +6,8 @@ const getRandomQuestions = async () => {
 
   try {
     const response = await axios.get(baseUrl, config);
-    console.log(response);
+    const questions = response.data.results
+    console.log(questions);
   } catch (error) {
     console.error(`Error fetching questions: ${error}`);
   }
