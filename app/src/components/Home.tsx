@@ -1,9 +1,11 @@
 import { useState } from "react";
+import Trivia from "./Trivia";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
 import getRandomQuestions from "../api/getRandomQuestions";
 
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
+
 
   const handeStartButtonClick = () => {
     setIsStartButtonClicked(!isStartButtonClicked);
@@ -32,6 +34,7 @@ export default function Home() {
         </p>
       </div>
       <ButtonGetStarted onClick={handeStartButtonClick} />
+      <Trivia />
     </div>
   )
 }
