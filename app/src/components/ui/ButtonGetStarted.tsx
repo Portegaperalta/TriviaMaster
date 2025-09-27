@@ -1,6 +1,10 @@
+import { motion } from "motion/react"
+
 export default function ButtonGetStarted() {
   return (
-    <div className="get-started-button">
+    <motion.div
+      whileTap={{ scale: 0.92 }}
+      className="get-started-button">
       <button
         id="getStartedButton"
         type="button"
@@ -10,6 +14,6 @@ export default function ButtonGetStarted() {
       >
         Let’s Get Started
       </button>
-    </div>
+    </motion.div>
   )
 }
