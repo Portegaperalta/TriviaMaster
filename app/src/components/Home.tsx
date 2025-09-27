@@ -1,27 +1,27 @@
+import ButtonGetStarted from "./ui/ButtonGetStarted";
+
 export default function Home() {
   return (
-    <div className="home">
-      <div className="home-title">
-        <h1 className="text-()">Trivia</h1>
-        <h2>Master</h2>
+    <div className="home text-center space-y-6">
+      <div className="home-title flex flex-col text-[3rem]/14">
+        <h1 className="text-transparent font-[800] bg-clip-text 
+        bg-radial-[at_50%_75%] from-(--clr-purple-gradient) to-(--clr-blue-gradient) to-50%">
+          Trivia
+        </h1>
+        <h2 className="text-transparent font-[800] bg-clip-text
+        bg-radial-[at_50%_75%] from-(--clr-purple-gradient) to-(--clr-blue-gradient) to-50%">
+          Master
+        </h2>
       </div>
-      <div className="home-description">
-        <p className="text-(--clr-white)">
+      <div className="home-description space-y-4">
+        <p className="text-(--clr-white) text-[1.8rem] font-[600]">
           Test your knowledge!
         </p>
-        <p className="text-(--clr-white-opacity)">
+        <p className="text-(--clr-white-opacity) text-[1.13rem] font-[600]">
           Challenge yourself with randomly generated quizzes
         </p>
       </div>
-      <div className="get-started-btn">
-        <button
-          id="getStartedButton"
-          type="button"
-          className=""
-        >
-          Let’s Get Started
-        </button>
-      </div>
+      <ButtonGetStarted />
     </div>
   )
 }
