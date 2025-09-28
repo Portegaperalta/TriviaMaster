@@ -1,3 +1,6 @@
+import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
+
 type QuestionCardProps = {
   questionNumber: number,
   questionTitle: string,
@@ -26,16 +29,16 @@ export default function QuestionCard({
           questionIncorrectAnswers.map((incorrectAnswer) => (
             <p
               key={incorrectAnswer}
+              dangerouslySetInnerHTML={{ __html: incorrectAnswer }}
               className="text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
               cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out"
-            >
-              {incorrectAnswer}
-            </p>
+            />
           ))
         }
-        <p className="text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
+        <p
+          dangerouslySetInnerHTML={{ __html: questionCorrectAnswer }}
+          className="text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
         cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out">
-          {questionCorrectAnswer}
         </p>
       </div>
     </div>
