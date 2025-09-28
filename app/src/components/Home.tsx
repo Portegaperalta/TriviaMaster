@@ -50,7 +50,7 @@ export default function Home() {
         </div>
         <ButtonGetStarted onClick={handeStartButtonClick} />
       </div>
-      <Trivia />
+      <Trivia randomQuestions={randomQuestions} />
     </div>
   )
 }
