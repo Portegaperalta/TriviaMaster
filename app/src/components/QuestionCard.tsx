@@ -1,6 +1,3 @@
-import { motion } from 'motion/react'
-import { useEffect, useState } from 'react'
-
 type QuestionCardProps = {
   questionNumber: number,
   questionTitle: string,
