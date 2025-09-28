@@ -20,9 +20,10 @@ export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
 
-  const handeStartButtonClick = () => {
+  const handeStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
-    getRandomQuestions();
+    const fetchedQuestions = await getRandomQuestions();
+    setRandomQuestions(fetchedQuestions);
   }
 
   return (
