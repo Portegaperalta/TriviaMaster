@@ -4,14 +4,16 @@ type QuestionCardProps = {
   questionNumber: number,
   questionTitle: string,
   questionCorrectAnswer: string,
-  questionIncorrectAnswers: string[]
+  questionIncorrectAnswers: string[],
+  onSelectCorrectAnswer: () => void,
 }
 
 export default function QuestionCard({
   questionNumber,
   questionTitle,
   questionCorrectAnswer,
-  questionIncorrectAnswers
+  questionIncorrectAnswers,
+  onSelectCorrectAnswer
 }: QuestionCardProps) {
   return (
     <div className="question-card bg-(--clr-gray-blue) py-6 px-4 rounded-lg
@@ -35,6 +37,7 @@ export default function QuestionCard({
           ))
         }
         <p
+          onClick={onSelectCorrectAnswer}
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
           className="text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
         cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out">
