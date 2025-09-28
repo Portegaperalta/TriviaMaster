@@ -1,4 +1,5 @@
 import DOMPurify from "dompurify"
+import ButtonNextQuestion from "./ui/ButtonNextQuestion"
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -43,6 +44,7 @@ export default function QuestionCard({
         cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out">
         </p>
       </div>
+      <ButtonNextQuestion className={``} />
     </div>
   )
 }
