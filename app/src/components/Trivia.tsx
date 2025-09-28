@@ -1,3 +1,4 @@
+import QuestionCard from "./QuestionCard"
 
 type Question = {
   type: string,
@@ -18,8 +19,24 @@ type TriviaProps = {
 
 export default function Trivia(props: TriviaProps) {
   return (
-    <div className="trivia">
-
-    </div>
+    props.randomQuestions ? (
+      <div className="trivia flex flex-col items-center gap-4">
+        {
+          props.randomQuestions.map((randomQuestion) => (
+            <QuestionCard
+              questionNumber={props.randomQuestions.indexOf(randomQuestion) + 1}
+              key={randomQuestion.question}
+              questionTitle={randomQuestion.question}
+              questionCorrectAnswer={randomQuestion.correct_answer}
+              questionIncorrectAnswers={randomQuestion.incorrect_answers}
+            />
+          ))
+        }
+      </div>
+    ) : (
+      <div className="trivia">
+        <p>Loading questions...</p>
+      </div>
+    )
   )
 }
