@@ -12,8 +12,7 @@ export default function ButtonNextQuestion({ className }: ButtonNextQuestionProp
       <button
         id="nexQuestionButton"
         type="button"
-        className="text-(--clr-white) text-[1.13rem] font-[600] py-2 px-4 
-        w-full bg-(--clr-blue) rounded-full cursor-pointer"
+        className={className}
       >
         Next Question
       </button>
