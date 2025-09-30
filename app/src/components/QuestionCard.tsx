@@ -44,7 +44,8 @@ export default function QuestionCard({
         cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out">
         </p>
       </div>
-      <ButtonNextQuestion className={``} />
+      <ButtonNextQuestion className={`text-(--clr-white) text-[1.13rem] font-[600] py-1.5 px-4 
+        w-full bg-(--clr-blue) rounded-full cursor-pointer`} />
     </div>
   )
 }
