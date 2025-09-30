@@ -42,8 +42,17 @@ export default function Trivia(props: TriviaProps) {
         }
       </div>
     ) : (
-      <div className="trivia">
-        <p>Loading questions...</p>
+      <div className="trivia-error-message flex flex-col items-center">
+        <div className="trivia-error-message-img">
+          <img
+            src="/error-icon.svg"
+            alt="error icon"
+            className="size-100"
+          />
+        </div>
+        <p className="text-(--clr-white) text-[1.2rem] text-center">
+          There was an error while getting the questions, please try later.
+        </p>
       </div>
     )
   )
