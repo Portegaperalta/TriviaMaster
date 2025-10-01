@@ -15,12 +15,6 @@ type TriviaProps = {
 }
 
 export default function Trivia(props: TriviaProps) {
-  let [userScore, setUserScore] = useState(0);
-
-  const increaseUserScore = () => {
-    setUserScore(userScore + 1);
-  }
-
   return (
     props.randomQuestions ? (
       <div className="trivia space-y-6">
@@ -32,7 +26,6 @@ export default function Trivia(props: TriviaProps) {
               questionTitle={randomQuestion.question}
               questionCorrectAnswer={randomQuestion.correct_answer}
               questionIncorrectAnswers={randomQuestion.incorrect_answers}
-              onSelectCorrectAnswer={increaseUserScore}
             />
           ))
         }

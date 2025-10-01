@@ -7,7 +7,6 @@ type QuestionCardProps = {
   questionTitle: string,
   questionCorrectAnswer: string,
   questionIncorrectAnswers: string[],
-  onSelectCorrectAnswer: () => void,
 }
 
 export default function QuestionCard({
@@ -15,7 +14,6 @@ export default function QuestionCard({
   questionTitle,
   questionCorrectAnswer,
   questionIncorrectAnswers,
-  onSelectCorrectAnswer
 }: QuestionCardProps) {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -52,7 +50,6 @@ export default function QuestionCard({
           ))
         }
         <p
-          onClick={onSelectCorrectAnswer}
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
           className="text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
         cursor-pointer hover:bg-(--clr-light-blue) duration-75 ease-in-out">
