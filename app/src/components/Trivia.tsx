@@ -3,15 +3,11 @@ import QuestionCard from "./QuestionCard"
 
 type Question = {
   type: string,
-  difficulty: "medium",
-  category: "General Knowledge",
-  question: "When was Nintendo founded?",
-  correct_answer: "September 23rd, 1889",
-  incorrect_answers: [
-    "October 19th, 1891",
-    "March 4th, 1887",
-    "December 27th, 1894"
-  ]
+  difficulty: string,
+  category: string,
+  question: string,
+  correct_answer: string,
+  incorrect_answers: string[]
 }
 
 type TriviaProps = {
