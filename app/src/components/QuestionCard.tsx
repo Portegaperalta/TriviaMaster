@@ -18,10 +18,13 @@ export default function QuestionCard({
   onSelectCorrectAnswer
 }: QuestionCardProps) {
 
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isAnswerClicked, setIsAnswerClicked] = useState<boolean>(false);
 
-  const handleAnswerClick = () => {
-    setIsAnswerClicked(!isAnswerClicked);
+  const handleAnswerClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
+    setIsAnswerClicked(true);
+    // turns retrieved data-index attribute from element to a number
+    setActiveIndex(Number(e.currentTarget.getAttribute('data-index')));
   }
 
   return (
@@ -36,13 +39,14 @@ export default function QuestionCard({
       />
       <div className="question-answers py-14 flex flex-col gap-6">
         {
-          questionIncorrectAnswers.map((incorrectAnswer,) => (
+          questionIncorrectAnswers.map((incorrectAnswer, index) => (
             <p
               key={incorrectAnswer}
+              data-index={index}
               onClick={handleAnswerClick}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
               className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
-              cursor-pointer ${isAnswerClicked ? `bg-(--clr-light-blue)` : `bg-transparent`}
+              cursor-pointer ${activeIndex === index ? `bg-(--clr-light-blue)` : `bg-transparent`}
               hover:bg-(--clr-light-blue) duration-75 ease-in-out`}
             />
           ))
