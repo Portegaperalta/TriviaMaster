@@ -1,6 +1,6 @@
 import DOMPurify from "dompurify"
 import ButtonNextQuestion from "./ui/ButtonNextQuestion"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -18,11 +18,14 @@ export default function QuestionCard({
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isAnswerClicked, setIsAnswerClicked] = useState<boolean>(false);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
   const handleAnswerClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     setIsAnswerClicked(true);
-    // turns retrieved data-index attribute from element to a number
+    // turns retrieved data-index attribute to a number
     setActiveIndex(Number(e.currentTarget.getAttribute('data-index')));
+    // updates selectedAnswer state to the element inner text
+    setSelectedAnswer(e.currentTarget.innerText);
   }
 
   return (
@@ -54,7 +57,8 @@ export default function QuestionCard({
           onClick={handleAnswerClick}
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
           className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
-        cursor-pointer ${activeIndex === 5 ? `bg-(--clr-light-blue)` : `bg-transparent`} hover:bg-(--clr-light-blue) duration-75 ease-in-out`}>
+          cursor-pointer ${activeIndex === 5 ? `bg-(--clr-light-blue)` : `bg-transparent`} 
+          hover:bg-(--clr-light-blue) duration-75 ease-in-out`}>
         </p>
       </div>
       <ButtonNextQuestion className={`text-(--clr-white) text-[1.13rem] font-[600]
