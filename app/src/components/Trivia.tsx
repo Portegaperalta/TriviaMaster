@@ -23,7 +23,7 @@ export default function Trivia(props: TriviaProps) {
 
   return (
     props.randomQuestions ? (
-      <div className="trivia flex flex-col items-center gap-4">
+      <div className="trivia space-y-6">
         {
           props.randomQuestions.map((randomQuestion) => (
             <QuestionCard

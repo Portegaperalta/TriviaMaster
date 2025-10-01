@@ -3,7 +3,7 @@ import Home from './components/Home'
 
 function App() {
   return (
-    <main>
+    <main className='flex flex-col items-center'>
       <Home />
     </main>
   )
