@@ -16,7 +16,7 @@ export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
 
-  const handeStartButtonClick = async () => {
+  const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
     const fetchedQuestions = await getRandomQuestions();
     setRandomQuestions(fetchedQuestions);
@@ -44,7 +44,7 @@ export default function Home() {
             Challenge yourself with randomly generated quizzes
           </p>
         </div>
-        <ButtonGetStarted onClick={handeStartButtonClick} />
+        <ButtonGetStarted onClick={handleStartButtonClick} />
       </div>
       <Trivia randomQuestions={randomQuestions} />
     </div>
