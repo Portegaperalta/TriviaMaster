@@ -5,22 +5,18 @@ import getRandomQuestions from "../api/getRandomQuestions";
 
 type Question = {
   type: string,
-  difficulty: "medium",
-  category: "General Knowledge",
-  question: "When was Nintendo founded?",
-  correct_answer: "September 23rd, 1889",
-  incorrect_answers: [
-    "October 19th, 1891",
-    "March 4th, 1887",
-    "December 27th, 1894"
-  ]
+  difficulty: string,
+  category: string,
+  question: string,
+  correct_answer: string,
+  incorrect_answers: string[];
 }
 
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
 
-  const handeStartButtonClick = async () => {
+  const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
     const fetchedQuestions = await getRandomQuestions();
     setRandomQuestions(fetchedQuestions);
@@ -48,7 +44,7 @@ export default function Home() {
             Challenge yourself with randomly generated quizzes
           </p>
         </div>
-        <ButtonGetStarted onClick={handeStartButtonClick} />
+        <ButtonGetStarted onClick={handleStartButtonClick} />
       </div>
       <Trivia randomQuestions={randomQuestions} />
     </div>
