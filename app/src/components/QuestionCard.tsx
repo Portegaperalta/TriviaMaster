@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify"
 import ButtonNextQuestion from "./ui/ButtonNextQuestion"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import saveToSessionStorage from "../utils/saveToSessionStorage";
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -22,10 +23,16 @@ export default function QuestionCard({
 
   const handleAnswerClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     setIsAnswerClicked(true);
-    // turns retrieved data-index attribute to a number
+    // turns the retrieved data-index attribute to a number
     setActiveIndex(Number(e.currentTarget.getAttribute('data-index')));
     // updates selectedAnswer state to the element inner text
     setSelectedAnswer(e.currentTarget.innerText);
+  }
+
+  const handleButtonNextClick = async () => {
+    if (selectedAnswer != '') {
+      saveToSessionStorage(`isQuestion${questionNumber}Answered`, JSON.stringify(true));
+    }
   }
 
   return (
@@ -62,6 +69,7 @@ export default function QuestionCard({
         </p>
       </div>
       <ButtonNextQuestion
+        onClick={handleButtonNextClick}
         className={`text-(--clr-white) text-[1.13rem] font-[600]
        py-1.5 px-4 w-full bg-(--clr-blue) rounded-full cursor-pointer 
        ${isAnswerClicked ? `inline-block` : `hidden`}`} />
