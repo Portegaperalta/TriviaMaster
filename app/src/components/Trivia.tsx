@@ -19,10 +19,10 @@ export default function Trivia(props: TriviaProps) {
     props.randomQuestions ? (
       <div className="trivia space-y-6">
         {
-          props.randomQuestions.map((randomQuestion) => (
+          props.randomQuestions.map((randomQuestion, i) => (
             <QuestionCard
-              questionNumber={props.randomQuestions.indexOf(randomQuestion) + 1}
-              key={randomQuestion.question}
+              key={i}
+              questionNumber={i + 1}
               questionTitle={randomQuestion.question}
               questionCorrectAnswer={randomQuestion.correct_answer}
               questionIncorrectAnswers={randomQuestion.incorrect_answers}
