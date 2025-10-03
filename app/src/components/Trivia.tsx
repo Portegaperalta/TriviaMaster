@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import QuestionCard from "./QuestionCard"
 
 type Question = {
