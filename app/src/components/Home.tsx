@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Trivia from "./Trivia";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
 import getRandomQuestions from "../api/getRandomQuestions";
+import saveToSessionStorage from "../utils/saveToSessionStorage";
 
 type Question = {
   type: string,
@@ -15,6 +16,13 @@ type Question = {
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
+
+
+  useEffect(() => {
+    for (let i = 1; i <= 10; i++) {
+      saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
+    }
+  }, [])
 
   const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
