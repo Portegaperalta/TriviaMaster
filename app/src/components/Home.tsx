@@ -1,34 +1,25 @@
 import { useEffect, useState } from "react";
+import type { Question } from "../types/questionTypes";
 import Trivia from "./Trivia";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
 import getRandomQuestions from "../api/getRandomQuestions";
 import saveToSessionStorage from "../utils/saveToSessionStorage";
 
-type Question = {
-  type: string,
-  difficulty: string,
-  category: string,
-  question: string,
-  correct_answer: string,
-  incorrect_answers: string[];
-}
-
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
-
-
-  useEffect(() => {
-    for (let i = 1; i <= 10; i++) {
-      saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
-    }
-  }, [])
 
   const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
     const fetchedQuestions = await getRandomQuestions();
     setRandomQuestions(fetchedQuestions);
   }
+
+  useEffect(() => {
+    for (let i = 1; i <= 10; i++) {
+      saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
+    }
+  }, [])
 
   return (
     <div className="home px-2 py-30">
