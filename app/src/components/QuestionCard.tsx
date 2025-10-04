@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify"
 import ButtonNextQuestion from "./ui/ButtonNextQuestion"
 import React, { useState } from "react"
+import { X } from "lucide-react"
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -48,7 +49,7 @@ export default function QuestionCard({
         {
           questionIncorrectAnswers.map((incorrectAnswer, index) => (
             <p
-              key={incorrectAnswer}
+              key={index}
               data-index={index}
               onClick={handleAnswerClick}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
