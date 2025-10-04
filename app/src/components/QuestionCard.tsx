@@ -7,6 +7,7 @@ type QuestionCardProps = {
   questionTitle: string,
   questionCorrectAnswer: string,
   questionIncorrectAnswers: string[],
+  onSelectCorrectAnswer: (selectedAnswer: string, correctAnswer: string) => void;
 }
 
 export default function QuestionCard({
@@ -14,6 +15,7 @@ export default function QuestionCard({
   questionTitle,
   questionCorrectAnswer,
   questionIncorrectAnswers,
+  onSelectCorrectAnswer,
 }: QuestionCardProps) {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -29,7 +31,7 @@ export default function QuestionCard({
   }
 
   const handleButtonNextClick = async () => {
-
+    onSelectCorrectAnswer(selectedAnswer, questionCorrectAnswer);
   }
 
   return (

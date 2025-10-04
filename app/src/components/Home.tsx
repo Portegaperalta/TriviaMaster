@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Question } from "../types/questionTypes";
 import Trivia from "./Trivia";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
@@ -7,12 +7,23 @@ import getRandomQuestions from "../api/getRandomQuestions";
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
+  const [userScore, setUserScore] = useState<number>(0);
 
   const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
     const fetchedQuestions = await getRandomQuestions();
     setRandomQuestions(fetchedQuestions);
   }
+
+  const increaseUserScore = (selectedAnswer: string, correctAnswer: string) => {
+    if (selectedAnswer === correctAnswer) {
+      setUserScore(userScore + 1);
+    }
+  }
+
+  useEffect(() => {
+    console.log(userScore);
+  }, [userScore])
 
   return (
     <div className="home px-2 py-30">
@@ -38,7 +49,9 @@ export default function Home() {
         </div>
         <ButtonGetStarted onClick={handleStartButtonClick} />
       </div>
-      <Trivia randomQuestions={randomQuestions} />
+      <Trivia randomQuestions={randomQuestions}
+        onSelectCorrectAnswer={increaseUserScore}
+      />
     </div>
   )
 }
