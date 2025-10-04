@@ -1,7 +1,6 @@
 import DOMPurify from "dompurify"
 import ButtonNextQuestion from "./ui/ButtonNextQuestion"
-import React, { useEffect, useState } from "react"
-import saveToSessionStorage from "../utils/saveToSessionStorage";
+import React, { useState } from "react"
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -30,9 +29,7 @@ export default function QuestionCard({
   }
 
   const handleButtonNextClick = async () => {
-    if (selectedAnswer != '') {
-      saveToSessionStorage(`isQuestion${questionNumber}Answered`, JSON.stringify(true));
-    }
+
   }
 
   return (
