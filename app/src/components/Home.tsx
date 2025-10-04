@@ -3,11 +3,11 @@ import type { Question } from "../types/questionTypes";
 import Trivia from "./Trivia";
 import ButtonGetStarted from "./ui/ButtonGetStarted";
 import getRandomQuestions from "../api/getRandomQuestions";
-import saveToSessionStorage from "../utils/saveToSessionStorage";
 
 export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
+  const [userScore, setUserScore] = useState<number>(0);
 
   const handleStartButtonClick = async () => {
     setIsStartButtonClicked(!isStartButtonClicked);
@@ -15,11 +15,11 @@ export default function Home() {
     setRandomQuestions(fetchedQuestions);
   }
 
-  useEffect(() => {
-    for (let i = 1; i <= 10; i++) {
-      saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
+  const increaseUserScore = (selectedAnswer: string, correctAnswer: string) => {
+    if (selectedAnswer === correctAnswer) {
+      setUserScore(userScore + 1);
     }
-  }, [])
+  }
 
   return (
     <div className="home px-2 py-30">
@@ -45,7 +45,9 @@ export default function Home() {
         </div>
         <ButtonGetStarted onClick={handleStartButtonClick} />
       </div>
-      <Trivia randomQuestions={randomQuestions} />
+      <Trivia randomQuestions={randomQuestions}
+        onSelectCorrectAnswer={increaseUserScore}
+      />
     </div>
   )
 }
