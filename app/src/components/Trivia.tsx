@@ -15,6 +15,8 @@ type TriviaProps = {
 }
 
 export default function Trivia(props: TriviaProps) {
+
+
   return (
     props.randomQuestions ? (
       <div className="trivia space-y-6">

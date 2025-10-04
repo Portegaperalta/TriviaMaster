@@ -21,10 +21,6 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    console.log(userScore);
-  }, [userScore])
-
   return (
     <div className="home px-2 py-30">
       <div className={`home-intro text-center space-y-10 
