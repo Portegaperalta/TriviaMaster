@@ -52,9 +52,11 @@ export default function QuestionCard({
               data-index={index}
               onClick={handleAnswerClick}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
-              className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
-              cursor-pointer ${activeIndex === index ? `bg-(--clr-light-blue)` : `bg-transparent`}
-              hover:bg-(--clr-light-blue) duration-75 ease-in-out`}
+              className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 
+              rounded-xl cursor-pointer hover:bg-(--clr-light-blue) duration-75 
+              ease-in-out ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
+              ${(activeIndex === index && isAnswerClicked) ? `bg-(--clr-red) border-(--clr-red) hover:bg-(--clr-red)` : `bg-transparent`}
+              `}
             />
           ))
         }
@@ -63,8 +65,9 @@ export default function QuestionCard({
           onClick={handleAnswerClick}
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
           className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
-          cursor-pointer ${activeIndex === 5 ? `bg-(--clr-light-blue)` : `bg-transparent`} 
-          hover:bg-(--clr-light-blue) duration-75 ease-in-out`}>
+          cursor-pointer duration-75 ease-in-out
+          ${isAnswerClicked ? `bg-(--clr-green) border-(--clr-green) hover:bg-(--clr-green) pointer-events-none`
+              : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
         </p>
       </div>
       <ButtonNextQuestion
