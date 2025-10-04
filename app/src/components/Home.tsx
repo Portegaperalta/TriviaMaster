@@ -9,18 +9,17 @@ export default function Home() {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState<boolean>(false);
   const [randomQuestions, setRandomQuestions] = useState<Question[]>([]);
 
+  const handleStartButtonClick = async () => {
+    setIsStartButtonClicked(!isStartButtonClicked);
+    const fetchedQuestions = await getRandomQuestions();
+    setRandomQuestions(fetchedQuestions);
+  }
 
   useEffect(() => {
     for (let i = 1; i <= 10; i++) {
       saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
     }
   }, [])
-
-  const handleStartButtonClick = async () => {
-    setIsStartButtonClicked(!isStartButtonClicked);
-    const fetchedQuestions = await getRandomQuestions();
-    setRandomQuestions(fetchedQuestions);
-  }
 
   return (
     <div className="home px-2 py-30">
