@@ -1,4 +1,4 @@
-const saveToSessionStorage = (key: string, value: string) => {
+const saveToSessionStorage = (key: string, value: any) => {
   sessionStorage.setItem(key, value);
 }
 

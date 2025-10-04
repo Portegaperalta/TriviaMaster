@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     for (let i = 1; i <= 10; i++) {
-      saveToSessionStorage(`isQuestion${i}Answered`, JSON.stringify(false));
+      saveToSessionStorage(`isQuestion${i}Answered`, false);
     }
   }, [])
 
