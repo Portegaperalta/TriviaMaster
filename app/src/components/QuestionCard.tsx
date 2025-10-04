@@ -48,28 +48,33 @@ export default function QuestionCard({
       <div className="question-answers py-14 flex flex-col gap-6">
         {
           questionIncorrectAnswers.map((incorrectAnswer, index) => (
-            <p
+            <div
               key={index}
-              data-index={index}
-              onClick={handleAnswerClick}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
-              className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 
+              className="incorrect-answer">
+              <p
+                data-index={index}
+                onClick={handleAnswerClick}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
+                className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 
               rounded-xl cursor-pointer hover:bg-(--clr-light-blue) duration-75 
               ease-in-out ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
               ${(activeIndex === index && isAnswerClicked) ? `bg-(--clr-red) border-(--clr-red) hover:bg-(--clr-red)` : `bg-transparent`}
               `}
-            />
+              />
+            </div>
           ))
         }
-        <p
-          data-index={5}
-          onClick={handleAnswerClick}
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
-          className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
+        <div className="correct-answer">
+          <p
+            data-index={5}
+            onClick={handleAnswerClick}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
+            className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
           cursor-pointer duration-75 ease-in-out
           ${isAnswerClicked ? `bg-(--clr-green) border-(--clr-green) hover:bg-(--clr-green) pointer-events-none`
-              : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
-        </p>
+                : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
+          </p>
+        </div>
       </div>
       <ButtonNextQuestion
         onClick={handleButtonNextClick}
