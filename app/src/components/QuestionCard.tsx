@@ -1,7 +1,7 @@
 import DOMPurify from "dompurify"
 import ButtonNextQuestion from "./ui/ButtonNextQuestion"
 import React, { useState } from "react"
-import { X } from "lucide-react"
+import { X, Check } from "lucide-react"
 
 type QuestionCardProps = {
   questionNumber: number,
@@ -61,6 +61,7 @@ export default function QuestionCard({
               ${(activeIndex === index && isAnswerClicked) ? `bg-(--clr-red) border-(--clr-red) hover:bg-(--clr-red)` : `bg-transparent`}
               `}
               />
+              <X color="#FFFFFF" />
             </div>
           ))
         }
@@ -74,6 +75,7 @@ export default function QuestionCard({
           ${isAnswerClicked ? `bg-(--clr-green) border-(--clr-green) hover:bg-(--clr-green) pointer-events-none`
                 : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
           </p>
+          <Check color="#FFFFFF" />
         </div>
       </div>
       <ButtonNextQuestion
