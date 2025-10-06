@@ -53,8 +53,9 @@ export default function QuestionCard({
               data-index={index}
               onClick={handleAnswerClick}
               className={`incorrect-answer text-(--clr-white) text-[1.2rem] border-2 
-              py-2 px-4 flex items-center rounded-xl cursor-pointer hover:bg-(--clr-light-blue) 
-              duration-75 ease-in-out ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
+              py-2 px-4 flex items-center justify-between rounded-xl cursor-pointer hover:bg-(--clr-light-blue) 
+              duration-75 ease-in-out 
+              ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
               ${(activeIndex === index && isAnswerClicked) ? `bg-(--clr-red) border-(--clr-red) hover:bg-(--clr-red)` : `bg-transparent`}
               `}>
               <p
@@ -71,7 +72,7 @@ export default function QuestionCard({
           data-index={5}
           onClick={handleAnswerClick}
           className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 flex 
-          items-center rounded-xl cursor-pointer duration-75 ease-in-out
+          items-center justify-between rounded-xl cursor-pointer duration-75 ease-in-out
           ${isAnswerClicked ? `bg-(--clr-green) border-(--clr-green) hover:bg-(--clr-green) pointer-events-none`
               : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
           <p
