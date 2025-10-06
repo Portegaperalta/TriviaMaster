@@ -23,7 +23,7 @@ export default function QuestionCard({
   const [isAnswerClicked, setIsAnswerClicked] = useState<boolean>(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
-  const handleAnswerClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
+  const handleAnswerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsAnswerClicked(true);
     // turns the retrieved data-index attribute to a number
     setActiveIndex(Number(e.currentTarget.getAttribute('data-index')));
@@ -36,8 +36,8 @@ export default function QuestionCard({
   }
 
   return (
-    <div className="question-card bg-(--clr-gray-blue) py-6 px-4 rounded-lg
-    w-full max-w-240">
+    <div className="question-card bg-(--clr-gray-blue) py-6 px-4 
+    rounded-lg w-full max-w-240">
       <div className="question-number text-(--clr-white) text-[1rem] mb-2">
         {`QUESTION ${questionNumber} OF 10`}
       </div>
@@ -50,32 +50,38 @@ export default function QuestionCard({
           questionIncorrectAnswers.map((incorrectAnswer, index) => (
             <div
               key={index}
-              className="incorrect-answer">
-              <p
-                data-index={index}
-                onClick={handleAnswerClick}
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
-                className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 
-              rounded-xl cursor-pointer hover:bg-(--clr-light-blue) duration-75 
-              ease-in-out ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
+              data-index={index}
+              onClick={handleAnswerClick}
+              className={`incorrect-answer text-(--clr-white) text-[1.2rem] border-2 
+              py-2 px-4 flex items-center rounded-xl cursor-pointer hover:bg-(--clr-light-blue) 
+              duration-75 ease-in-out ${isAnswerClicked ? `pointer-events-none` : `pointer-events-auto`}
               ${(activeIndex === index && isAnswerClicked) ? `bg-(--clr-red) border-(--clr-red) hover:bg-(--clr-red)` : `bg-transparent`}
-              `}
+              `}>
+              <p
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(incorrectAnswer) }}
               />
-              <X color="#FFFFFF" />
+              <X
+                color="#FFFFFF"
+                className={`${activeIndex === index ? `inline-block` : `hidden`}`}
+              />
             </div>
           ))
         }
-        <div className="correct-answer">
-          <p
-            data-index={5}
-            onClick={handleAnswerClick}
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
-            className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 rounded-xl
-          cursor-pointer duration-75 ease-in-out
+        <div
+          data-index={5}
+          onClick={handleAnswerClick}
+          className={`text-(--clr-white) text-[1.2rem] border-2 py-2 px-4 flex 
+          items-center rounded-xl cursor-pointer duration-75 ease-in-out
           ${isAnswerClicked ? `bg-(--clr-green) border-(--clr-green) hover:bg-(--clr-green) pointer-events-none`
-                : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
+              : `bg-transparent hover:bg-(--clr-light-blue) pointer-events-auto`}`}>
+          <p
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionCorrectAnswer) }}
+          >
           </p>
-          <Check color="#FFFFFF" />
+          <Check
+            color="#FFFFFF"
+            className={`${isAnswerClicked ? `inline-block` : `hidden`}`}
+          />
         </div>
       </div>
       <ButtonNextQuestion
